@@ -2,19 +2,22 @@ import "./global.scss";
 
 import styles from "./App.module.scss";
 
-import rocketIcon from "./assets/rocket-icon.svg";
+import { Header } from "./Header";
+import { Section } from "./Section";
+import { Wrapper } from "./Wrapper";
+import { Input } from "./Input";
+import { TasksSection } from "./TasksSection";
 
 export function App() {
   return (
     <div className={styles.app}>
-      <header>
-        <img src={rocketIcon} alt="Rocket Icon" />
-        <div>
-          <span>to</span>
-          <span>do</span>
-        </div>
-      </header>
-      <section>Another</section>
+      <Header />
+      <Section>
+        <Wrapper>
+          <Input />
+          <TasksSection />
+        </Wrapper>
+      </Section>
     </div>
   );
 }

@@ -1,0 +1,51 @@
+.tasksSection {
+  margin-top: 4rem;
+
+  > main {
+    // border: 1px solid red;
+    margin-top: 1.5rem;
+  }
+
+  > header {
+    display: flex;
+    justify-content: space-between;
+
+    > div:nth-child(1) {
+      color: var(--blue);
+      font: {
+        weight: 700;
+        size: 0.875rem;
+      }
+
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+      > span {
+        color: var(--gray-200);
+        background: var(--gray-400);
+        padding: 0.125rem 0.5rem;
+        border-radius: 999px;
+      }
+    }
+
+    > div:nth-child(2) {
+      color: var(--purple);
+      font: {
+        weight: 700;
+        size: 0.875rem;
+      }
+
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+
+      > span {
+        color: var(--gray-200);
+        background: var(--gray-400);
+        padding: 0.125rem 0.5rem;
+        border-radius: 999px;
+      }
+    }
+  }
+}
