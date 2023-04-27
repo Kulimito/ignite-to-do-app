@@ -1,6 +1,6 @@
 import styles from "./Header.module.scss";
 
-import rocketIcon from "./assets/rocket-icon.svg";
+import rocketIcon from "../assets/rocket-icon.svg";
 
 export function Header() {
   return (

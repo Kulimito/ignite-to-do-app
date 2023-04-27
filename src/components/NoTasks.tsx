@@ -1,6 +1,6 @@
 import styles from "./NoTasks.module.scss";
 
-import clipoardIcon from "../src/assets/clipboard-icon.svg"
+import clipoardIcon from "../assets/clipboard-icon.svg";
 
 export function NoTasks() {
   return (
