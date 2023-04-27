@@ -1,5 +1,3 @@
-import plusIcon from "./assets/plus-icon.svg";
-
 import styles from "./Input.module.scss";
 
 export function Input() {
@@ -8,8 +6,10 @@ export function Input() {
       <input type="text" placeholder="Adicionar uma nova tarefa" />
       <button>
         Criar
-        <img src={plusIcon} alt="Plus Icon" />
-        {/* Replace in the future */}
+        <div className={styles.container}>
+          <div></div>
+          <div></div>
+        </div>
       </button>
     </div>
   );

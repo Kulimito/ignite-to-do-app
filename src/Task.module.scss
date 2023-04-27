@@ -1,0 +1,95 @@
+.task {
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  padding: 1rem;
+
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+
+  > p {
+    color: var(--gray-100);
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  .deleteButton {
+    border: none;
+    background: transparent;
+    color: var(--gray-300);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.1s, color 0.1s;
+
+    &:hover {
+      background: var(--gray-400);
+      color: var(--danger);
+      border-radius: 4px;
+    }
+  }
+
+  .checkButtonChecked {
+    height: 1.5rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1 0 1.5rem;
+
+    > span {
+      background: var(--purple-dark);
+      width: 1.090625rem;
+      height: 1.090625rem;
+      border-radius: 50%;
+      transition: background-color 0.1s;
+
+      &:hover {
+        background: var(--purple);
+      }
+
+      > span {
+        display: inline-block;
+        width: 0.293125rem;
+        height: 0.456875rem;
+        border-bottom: 0.125rem solid var(--gray-100);
+        border-right: 0.125rem solid var(--gray-100);
+        transform: translateY(-4px) rotateZ(45deg);
+      }
+    }
+  }
+
+  .checkButton {
+    height: 1.5rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex: 1 0 1.5rem;
+
+    > span {
+      display: inline-block;
+      border: 2px solid var(--blue);
+      width: 1.090625rem;
+      height: 1.090625rem;
+      border-radius: 50%;
+      transition: background-color 0.1s;
+
+      &:hover {
+        background: var(--blue-dark);
+      }
+    }
+  }
+
+  .crossOutText {
+    color: var(--gray-300);
+    text-decoration: line-through;
+  }
+}

@@ -1,4 +1,5 @@
 import { NoTasks } from "./NoTasks";
+import { Task } from "./Task";
 import styles from "./TasksSection.module.scss";
 
 export function TasksSection() {
@@ -12,9 +13,7 @@ export function TasksSection() {
           Concluídas <span>0</span>
         </div>
       </header>
-      <main>
-        <NoTasks />
-      </main>
+      <main>{true ? <Task /> : <NoTasks />}</main>
     </section>
   );
 }

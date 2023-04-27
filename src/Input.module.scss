@@ -19,7 +19,7 @@
   }
 
   > button {
-    background: var(--blue);
+    background: var(--blue-dark);
     color: var(--gray-100);
     padding: 1rem;
     border: none;
@@ -34,19 +34,35 @@
       size: 0.875rem;
     }
     line-height: 1.4;
-
-    > img {
-      height: 1rem;
+    transition: background-color 0.1s;
+    
+    &:hover {
+      background: var(--blue);
     }
 
-    // > span {
-    //   width: 1rem;
-    //   height: 1rem;
-    //   border: 2px solid var(--gray-100);
-    //   border-radius: 50%;
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
-    // }
+    .container {
+      position: relative;
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid var(--gray-100);
+      border-radius: 50%;
+
+      div:nth-child(1) {
+        position: absolute;
+        width: 0.5rem;
+        border-bottom: 1.5px solid var(--gray-100);
+        top: 48%;
+        left: 2px;
+      }
+      
+      div:nth-child(2) {
+        position: absolute;
+        width: 0.5rem;
+        border-bottom: 1.5px solid var(--gray-100);
+        top: 48%;
+        left: 2px;
+        transform: rotate(90deg)
+      }
+    }
   }
 }
