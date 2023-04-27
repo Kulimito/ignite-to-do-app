@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, KeyboardEvent } from "react";
+import { ChangeEvent, FormEvent, InvalidEvent } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import styles from "./Input.module.scss";
@@ -16,43 +16,47 @@ interface InputProps {
 export function Input({
   handlers: [newTask, setNewTask, setNewTasks],
 }: InputProps) {
-  const [isInputValid, setIsInputValid] = useState<boolean>(false);
-
   function onInputHandler(e: ChangeEvent<HTMLInputElement>) {
-    setIsInputValid(true);
     setNewTask(e.target.value);
+    e.target.setCustomValidity("");
   }
 
-  function addNewTaskHandker() {
-    setNewTasks((tasks) => {
-      return [...tasks, { id: uuidv4(), checked: false, content: newTask }];
-    });
+  function onFormSubmitHandler(e: FormEvent) {
+    e.preventDefault();
+
+    const isTaskNotEmpty = newTask.trim().length > 0;
+
+    isTaskNotEmpty &&
+      setNewTasks((tasks) => {
+        return [
+          ...tasks,
+          { id: uuidv4(), checked: false, content: newTask.trim() },
+        ];
+      });
     setNewTask("");
-    setIsInputValid(false);
   }
 
-  function onEnterKeyPressAddNewTaskHandler(
-    e: KeyboardEvent<HTMLInputElement>
-  ) {
-    e.key === "Enter" && isInputValid ? addNewTaskHandker() : null;
+  function handleNewTaskInvalid(e: InvalidEvent<HTMLInputElement>) {
+    e.target.setCustomValidity("Esse campo é obrigatório!");
   }
 
   return (
-    <div className={styles.dataInput}>
+    <form className={styles.dataInput} onSubmit={onFormSubmitHandler}>
       <input
         type="text"
         placeholder="Adicionar uma nova tarefa"
         onChange={onInputHandler}
-        onKeyDown={onEnterKeyPressAddNewTaskHandler}
         value={newTask}
+        required
+        onInvalid={handleNewTaskInvalid}
       />
-      <button onClick={addNewTaskHandker} disabled={!isInputValid}>
+      <button type="submit">
         Criar
         <div className={styles.container}>
           <div></div>
           <div></div>
         </div>
       </button>
-    </div>
+    </form>
   );
 }

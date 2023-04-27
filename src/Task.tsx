@@ -1,31 +1,32 @@
 import styles from "./Task.module.scss";
 
-import { useState } from "react";
-
 import { Trash } from "phosphor-react";
 
-import { TaskType, setNewTasksType, setTaskCheckedCounterType } from "./types";
+import { TaskType, setNewTasksType } from "./types";
 
 interface TaskProps {
-  handlers: [
-    task: TaskType,
-    setNewTasks: setNewTasksType,
-    setTaskCheckedCounter: setTaskCheckedCounterType
-  ];
+  handlers: [task: TaskType, setNewTasks: setNewTasksType];
 }
 
-export function Task({ handlers: [task, setNewTasks, setTaskCheckedCounter] } : TaskProps) {
-  const [isTaskChecked, setIsTaskChecked] = useState<boolean>(false);
+export function Task({ handlers: [task, setNewTasks] }: TaskProps) {
+  const isTaskChecked = task.checked;
 
   function onClickCheckHandler() {
-    setIsTaskChecked((previousState) => !previousState);
-    setTaskCheckedCounter((counter) =>
-      isTaskChecked ? counter - 1 : counter + 1
-    );
+    setNewTasks((previousTaskList) => {
+      const updatedTask = { ...task, checked: !task.checked };
+
+      const indexOfTaskToUpdate = previousTaskList.findIndex(
+        (taskItem) => taskItem.id === task.id
+      );
+
+      const updatedTaskList = [...previousTaskList];
+      updatedTaskList[indexOfTaskToUpdate] = updatedTask;
+
+      return updatedTaskList;
+    });
   }
 
   function onClickDeleteTaskHandler() {
-    setTaskCheckedCounter((counter) => (isTaskChecked ? counter - 1 : counter));
     setNewTasks((previousTaskList) =>
       previousTaskList.filter((taskItem) => taskItem.id !== task.id)
     );

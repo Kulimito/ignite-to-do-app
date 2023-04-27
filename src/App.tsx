@@ -15,7 +15,6 @@ import { TaskListType } from "./types";
 export function App() {
   const [newTask, setNewTask] = useState<string>("");
   const [tasks, setNewTasks] = useState<TaskListType>([]);
-  const [taskCheckedCounter, setTaskCheckedCounter] = useState<number>(0);
 
   return (
     <div className={styles.app}>
@@ -26,9 +25,7 @@ export function App() {
           <TasksSection
             handlers={[
               tasks,
-              setNewTasks,
-              taskCheckedCounter,
-              setTaskCheckedCounter,
+              setNewTasks           
             ]}
           />
         </Wrapper>

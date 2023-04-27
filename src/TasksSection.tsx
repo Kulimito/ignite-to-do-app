@@ -3,25 +3,21 @@ import { Task } from "./Task";
 
 import styles from "./TasksSection.module.scss";
 
-import {
-  TaskListType,
-  setNewTasksType,
-  setTaskCheckedCounterType,
-} from "./types";
+import { TaskListType, setNewTasksType } from "./types";
 
 interface TasksSectionProps {
-  handlers: [
-    tasks: TaskListType,
-    setNewTasks: setNewTasksType,
-    taskCheckedCounter: number,
-    setTaskCheckedCounter: setTaskCheckedCounterType
-  ];
+  handlers: [tasks: TaskListType, setNewTasks: setNewTasksType];
 }
 
 export function TasksSection({
-  handlers: [tasks, setNewTasks, taskCheckedCounter, setTaskCheckedCounter],
+  handlers: [tasks, setNewTasks],
 }: TasksSectionProps) {
   const numberOfTaks = tasks.length;
+
+  const numberOfCheckedTasks = tasks.reduce(
+    (counter, task) => (task.checked ? counter + 1 : counter),
+    0
+  );
 
   const isTasksListEmpty = numberOfTaks === 0;
 
@@ -32,7 +28,7 @@ export function TasksSection({
           Tarefas criadas <span>{numberOfTaks}</span>
         </div>
         <div>
-          Concluídas <span>{`${taskCheckedCounter} de ${numberOfTaks}`}</span>
+          Concluídas <span>{`${numberOfCheckedTasks} de ${numberOfTaks}`}</span>
         </div>
       </header>
       <main>
@@ -40,10 +36,7 @@ export function TasksSection({
           <NoTasks />
         ) : (
           tasks.map((task) => (
-            <Task
-              key={task.id}
-              handlers={[task, setNewTasks, setTaskCheckedCounter]}
-            />
+            <Task key={task.id} handlers={[task, setNewTasks]} />
           ))
         )}
       </main>
