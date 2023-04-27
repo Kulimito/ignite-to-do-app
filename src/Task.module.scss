@@ -4,6 +4,7 @@
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
   padding: 1rem;
+  margin-top: 0.75rem;
 
   display: flex;
   gap: 0.75rem;
@@ -13,12 +14,14 @@
     color: var(--gray-100);
     font-size: 0.875rem;
     line-height: 1.4;
+    flex: 1;
   }
 
   .deleteButton {
     border: none;
     background: transparent;
     color: var(--gray-300);
+    cursor: pointer;
 
     display: flex;
     justify-content: center;
@@ -33,14 +36,14 @@
   }
 
   .checkButtonChecked {
+    width: 1.5rem;
     height: 1.5rem;
     background: transparent;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    flex: 1 0 1.5rem;
+    cursor: pointer;
 
     > span {
       background: var(--purple-dark);
@@ -65,14 +68,14 @@
   }
 
   .checkButton {
+    width: 1.5rem;
     height: 1.5rem;
     background: transparent;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    flex: 1 0 1.5rem;
+    cursor: pointer;
 
     > span {
       display: inline-block;

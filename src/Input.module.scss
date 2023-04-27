@@ -24,6 +24,7 @@
     padding: 1rem;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
 
     display: flex;
     gap: 0.5rem;
@@ -38,6 +39,11 @@
     
     &:hover {
       background: var(--blue);
+    }
+
+    &:disabled {
+      opacity: 0.8;
+      cursor: not-allowed;
     }
 
     .container {
